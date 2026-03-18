@@ -1,0 +1,41 @@
+[
+  {
+    "label": "Configure",
+    "command": "cmake",
+    "args": [
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Debug",
+      "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+    ],
+    "env": {},
+  },
+  {
+    "label": "Build Debug",
+    "command": "cmake",
+    "args": ["--build", "build", "--config", "Debug", "--parallel", "12"],
+    "env": {},
+  },
+  {
+    "label": "Build Release",
+    "command": "cmake",
+    "args": ["--build", "build", "--config", "Release", "--parallel", "12"],
+    "env": {},
+  },
+  {
+    "label": "Clang Tidy",
+    "command": "clang-tidy",
+    "args": ["-p", "build/compile_commands.json", "src/*.cpp", "include/*.hpp"],
+    "env": {},
+  },
+  {
+    "label": "Clean Build",
+    "command": "rm",
+    "args": ["-rf", "build"],
+    "env": {},
+  },
+]
