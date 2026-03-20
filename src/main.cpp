@@ -1,9 +1,13 @@
-#include "template.hpp"
-#include <iostream>
+#include "ui/main_window/main_window.h"
+#include <QApplication>
 
-int main() {
-    std::cout << "Hello world!" << '\n';
+int main(int argc, char *argv[]) {
+  QApplication app(argc, argv);
+  QApplication::setApplicationName("NerdFontsIconBrowser");
+  QApplication::setApplicationVersion("1.0.0");
 
-    Template::greet();
-    return 0;
+  MainWindow window;
+  window.show();
+
+  return QApplication::exec();
 }

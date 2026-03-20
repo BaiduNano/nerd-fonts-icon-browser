@@ -1,0 +1,18 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "windows-mingw",
+      "displayName": "windos",
+      "generator": "MinGW Makefiles",
+      "toolchainFile": "${sourceDir}/windows-mingw.cmake",
+      "binaryDir": "${sourceDir}/build-windows"
+    },
+    {
+      "name": "linux",
+      "displayName": "linuj",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build"
+    }
+  ]
+}

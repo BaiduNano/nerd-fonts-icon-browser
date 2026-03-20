@@ -1,8 +1,14 @@
 CompileFlags:
-  Add: ["-std=c++20", "-Iinclude"]
-  Remove: ["-W*", "-fdeps-format=*", "-fmodule-mapper=*", "-fmodules-ts"]
+  Add: ["-std=c++20", "-I.", "-I./src", "-isystem", "/usr/include/qt6"]
+  Remove: ["-W*", "-fdeps-format=*", "-fmodule-mapper=*", "-fmodules-ts", "-mno-direct-extern-access"]
 
 Diagnostics:
   ClangTidy:
-    Add: ["modernize-*", "performance-*", "readability-*"]
+    Add:
+      [
+        "modernize-*",
+        "performance-*",
+        "readability-*",
+        "readability-braces-around-statements",
+      ]
     Remove: ["modernize-use-trailing-return-type"]

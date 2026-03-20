@@ -12,30 +12,20 @@
       "-DCMAKE_BUILD_TYPE=Debug",
       "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
     ],
-    "env": {},
   },
   {
-    "label": "Build Debug",
+    "label": "Debug",
     "command": "cmake",
     "args": ["--build", "build", "--config", "Debug", "--parallel", "12"],
-    "env": {},
   },
   {
-    "label": "Build Release",
+    "label": "Release",
     "command": "cmake",
     "args": ["--build", "build", "--config", "Release", "--parallel", "12"],
-    "env": {},
   },
   {
-    "label": "Clang Tidy",
-    "command": "clang-tidy",
-    "args": ["-p", "build/compile_commands.json", "src/*.cpp", "include/*.hpp"],
-    "env": {},
-  },
-  {
-    "label": "Clean Build",
+    "label": "Remove",
     "command": "rm",
     "args": ["-rf", "build"],
-    "env": {},
   },
 ]
