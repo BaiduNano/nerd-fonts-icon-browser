@@ -6,6 +6,7 @@
 #include <QTimer>
 
 #include "../../modules/icon_manager/icon_manager.h"
+#include "../../modules/search_engine/search_engine.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -21,11 +22,16 @@ class MainWindow : public QWidget {
 private:
     Ui::MainWindow *ui;
     IconManager *iconManager;
+    SearchEngine *searchEngine;
 
     QTimer *notifTimer;
+    QLabel *landingLabel;
+
+    void setupLandingLabel();
 
     static void copyToClipboard(const QString &text);
     void spawnNotification(const QString &text);
+
     void onContentUpdated();
     void onNotifTimerTimeout();
     void onIconClicked(const QString &iconStr, const QString &labelStr, const QString &utfStr);

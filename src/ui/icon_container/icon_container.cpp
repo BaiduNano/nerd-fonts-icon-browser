@@ -16,6 +16,7 @@ IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QStr
 {
     setLayout(mainLayout);
     setMinimumWidth(64);
+    setMaximumHeight(92);
 
     mainLayout->setContentsMargins(1, 1, 1, 1);
     mainLayout->setSpacing(1);

@@ -29,6 +29,10 @@ IconContainers *IconManager::getIconContainers() {
     return &iconContainers;
 }
 
+IconMap IconManager::getIconMap() {
+    return iconMap;
+}
+
 QString IconManager::checkPathsAndGetPath(const QStringList &paths) {
     for (const QString &p : paths) {
         if (QFile::exists(p))
@@ -67,11 +71,11 @@ void IconManager::loadIcons(const QString &filePath) {
     qDebug() << "Loaded Icons: " << iconCount;
 }
 
-void IconManager::createIconContainers(QWidget *parent) {
+void IconManager::generateIconContainers(QWidget *parent, IconMap &map) {
 
     increment = 1;
 
-    for (const auto &[key, value] : iconMap.asKeyValueRange()) {
+    for (const auto &[key, value] : map.asKeyValueRange()) {
         // Stack allocation doesn't work
         IconContainer *instance = new IconContainer(parent, value[keyChar], key, value[keyCode]);
         iconContainers.push_back(instance);

@@ -9,6 +9,9 @@ namespace Constants {
     const quint8 maxItems = 200;
     const quint16 notificationDuration = 2000;
 
+    const QString defaultLandingText = "Example Usages in CSS\n\n\n";
+    const QString defaultLandingTextContent = "@import \"https://www.nerdfonts.com/assets/css/webfont.css\"\n\nI use <i class=\"nf nf-dev-qt\"></i>";
+
     inline QStringList getSearchPaths() {
         return {
             QCoreApplication::applicationDirPath() + "/glyphnames.json",

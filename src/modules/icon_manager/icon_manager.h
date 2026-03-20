@@ -16,7 +16,7 @@ private:
     IconMap iconMap;
     quint8 increment;
 
-    QString checkPathsAndGetPath(const QStringList &paths);
+    static QString checkPathsAndGetPath(const QStringList &paths);
     void loadIcons(const QString &filePath);
     void spawnCriticalError(QWidget *parent);
 
@@ -25,7 +25,9 @@ public:
     ~IconManager() override;
 
     IconContainers *getIconContainers();
-    void createIconContainers(QWidget *parent);
+    IconMap getIconMap();
+
+    void generateIconContainers(QWidget *parent, IconMap &map);
     void clearIconContainers();
 
 signals:

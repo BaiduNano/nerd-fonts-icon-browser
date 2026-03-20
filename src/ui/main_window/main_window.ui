@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QPlainTextEdit" name="SearchBar">
+    <widget class="QPlainTextEdit" name="searchBar">
      <property name="enabled">
       <bool>true</bool>
      </property>
