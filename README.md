@@ -1,5 +1,6 @@
 <div align="center">
   <img src="res/etc/ss.png" width="480">
+  <p>Note: Color and theme may look different depending on your Qt theme.</p>
 </div>
 
 # Nerd Fonts Icon Browser
@@ -8,8 +9,6 @@ A Qt based desktop app for browsing and searching Nerd Fonts icons with copy pas
 
 ## Download
 Binary realeases are available [here](https://github.com/BaiduNano/nerd-fonts-icon-browser/releases).
-
-Note: Color and theme may look different depending on your Qt theme.
 
 ## Copy Options
 
