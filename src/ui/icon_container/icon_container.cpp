@@ -10,9 +10,9 @@ IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QStr
     labelStr(labelStr),
     utfStr(utfStr),
 
-    mainLayout(new QVBoxLayout(parent)),
-    iconLabel(new QLabel(parent)),
-    iconButton(new QPushButton(parent))
+    mainLayout(new QVBoxLayout()),
+    iconLabel(new QLabel(this)),
+    iconButton(new QPushButton(this))
 {
     setLayout(mainLayout);
     setMinimumWidth(64);
@@ -36,9 +36,7 @@ IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QStr
     connect(iconButton, &QPushButton::customContextMenuRequested, this, &IconContainer::contextMenu);
 }
 
-IconContainer::~IconContainer() {
-    delete mainLayout;
-}
+IconContainer::~IconContainer() = default;
 
 void IconContainer::contextMenu(const QPoint &localPos) {
     QMenu menu(this);
