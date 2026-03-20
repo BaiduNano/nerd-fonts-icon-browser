@@ -5,7 +5,6 @@
 #include <QFile>
 #include <QMessageBox>
 
-const quint8 visibleIconLimit = 100;
 const QString keyChar = "char";
 const QString keyCode = "code";
 
@@ -14,11 +13,10 @@ IconManager::IconManager(QWidget *parent)
 {
     auto filePath = checkPathsAndGetPath(Constants::getSearchPaths());
     if (filePath.isEmpty()) {
-        QMessageBox::warning(parent, "Error", "Could not find glyphnames.json");
+        spawnCriticalError(parent);
         return;
     }
     loadIcons(filePath);
-    createIconContainers(parent);
 }
 
 IconManager::~IconManager(){
@@ -31,12 +29,12 @@ IconContainers *IconManager::getIconContainers() {
     return &iconContainers;
 }
 
-const QString &IconManager::checkPathsAndGetPath(const QStringList &paths) {
+QString IconManager::checkPathsAndGetPath(const QStringList &paths) {
     for (const QString &p : paths) {
         if (QFile::exists(p))
             return p;
     }
-    qDebug() << "Could not find glyphnames.json in any of the search paths";
+    qDebug() << "glyphnames.json not found";
     return QString();
 }
 
@@ -78,9 +76,36 @@ void IconManager::createIconContainers(QWidget *parent) {
         IconContainer *instance = new IconContainer(parent, value[keyChar], key, value[keyCode]);
         iconContainers.push_back(instance);
 
-        if (increment >= visibleIconLimit) {
+        if (increment >= Constants::maxItems) {
             break;
         }
         increment++;
     }
+    emit contentUpdated();
+}
+
+void IconManager::spawnCriticalError(QWidget *parent) {
+    QMessageBox msgBox(parent);
+
+    QString url = "https://github.com/ryanoasis/nerd-fonts/blob/master/glyphnames.json";
+
+    msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setWindowTitle("Error");
+    msgBox.setText("<b>Cannot find glyphnames.json</b>");
+    msgBox.setInformativeText(
+        "Please download the file below and place it in the application folder:"
+        "<br><br>"
+        "<a href='" + url + "'>" + url + "</a>"
+    );
+    msgBox.setTextInteractionFlags(Qt::LinksAccessibleByMouse | Qt::TextSelectableByMouse);
+
+    msgBox.exec();
+}
+
+void IconManager::clearIconContainers() {
+    for (IconContainer *container : iconContainers) {
+        delete container;
+    }
+    iconContainers.clear();
+    emit contentUpdated();
 }

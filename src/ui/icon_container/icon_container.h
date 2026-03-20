@@ -20,6 +20,7 @@ public:
     ~IconContainer() override;
 
 private:
+    const QPoint contexMenuOffset = QPoint(8, 16);
     QVBoxLayout *mainLayout;
     QPushButton *iconButton;
     QLabel *iconLabel;

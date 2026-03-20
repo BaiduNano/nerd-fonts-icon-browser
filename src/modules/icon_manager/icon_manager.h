@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QWidget>
+#include <qtmetamacros.h>
 #include "../../ui/icon_container/icon_container.h"
 
 using IconContainers = std::vector<IconContainer*>;
@@ -16,15 +17,20 @@ private:
     IconMap iconMap;
     quint8 increment = 0;
 
-    const QString &checkPathsAndGetPath(const QStringList &paths);
+    QString checkPathsAndGetPath(const QStringList &paths);
     void loadIcons(const QString &filePath);
-    void createIconContainers(QWidget *parent);
+    void spawnCriticalError(QWidget *parent);
 
 public:
     explicit IconManager(QWidget *parent = nullptr);
     ~IconManager() override;
 
     IconContainers *getIconContainers();
+    void createIconContainers(QWidget *parent);
+    void clearIconContainers();
+
+signals:
+    void contentUpdated();
 };
 
 #endif // ICON_MANAGER_H

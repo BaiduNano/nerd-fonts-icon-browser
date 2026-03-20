@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QGridLayout>
+#include <qtimer.h>
 #include "../../modules/icon_manager/icon_manager.h"
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +20,13 @@ class MainWindow : public QWidget {
 private:
     Ui::MainWindow *ui;
     IconManager *iconManager;
+
+    QTimer *notifTimer;
+
+    static void copyToClipboard(const QString &text);
+    void spawnNotification(const QString &text);
+    void onContentUpdated();
+    void onNotifTimerTimeout();
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
