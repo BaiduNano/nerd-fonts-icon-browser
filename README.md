@@ -1,10 +1,10 @@
 # Nerd Fonts Icon Browser
 
-A Qt based desktop app for browsing and searching Nerd Fonts icons with copy paste support, so you don't have to open a web browser everytime you want to search nerd font icons. 
+A Qt based desktop app for browsing and searching Nerd Fonts icons with copy paste support, so you don't have to open a web browser everytime you want to search for nerd font icons. 
 
 ## Screenshot
 Note: Color and theme might look different depending on your Qt theme.
-![Screenshot](res/etc/ss.png)
+<img src="res/etc/ss.png" width="600">
 
 
 ## Download
