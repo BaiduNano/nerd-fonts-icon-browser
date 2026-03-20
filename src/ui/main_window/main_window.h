@@ -3,7 +3,8 @@
 
 #include <QWidget>
 #include <QGridLayout>
-#include <qtimer.h>
+#include <QTimer>
+
 #include "../../modules/icon_manager/icon_manager.h"
 
 QT_BEGIN_NAMESPACE
@@ -27,6 +28,7 @@ private:
     void spawnNotification(const QString &text);
     void onContentUpdated();
     void onNotifTimerTimeout();
+    void onIconClicked(const QString &iconStr, const QString &labelStr, const QString &utfStr);
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);

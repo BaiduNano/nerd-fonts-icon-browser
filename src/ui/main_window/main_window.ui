@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>NerdFonts Icon Browser</string>
+   <string>Nerd Fonts Icon Browser</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -52,6 +52,57 @@
     </widget>
    </item>
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="iconAmmount">
+       <property name="toolTipDuration">
+        <number>-3</number>
+       </property>
+       <property name="text">
+        <string>Showing 534 Icons</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioCopyIcon">
+       <property name="text">
+        <string>Copy Icon</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioCopyName">
+       <property name="text">
+        <string>Copy Name</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioCopyUTF">
+       <property name="text">
+        <string>Copy UTF-8</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
@@ -65,7 +116,7 @@
         <x>0</x>
         <y>0</y>
         <width>656</width>
-        <height>514</height>
+        <height>476</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -81,7 +132,7 @@
    <item>
     <widget class="QLabel" name="notificationLabel">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Copied to clipboard</string>
      </property>
     </widget>
    </item>

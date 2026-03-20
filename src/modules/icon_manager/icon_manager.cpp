@@ -69,7 +69,7 @@ void IconManager::loadIcons(const QString &filePath) {
 
 void IconManager::createIconContainers(QWidget *parent) {
 
-    increment = 0;
+    increment = 1;
 
     for (const auto &[key, value] : iconMap.asKeyValueRange()) {
         // Stack allocation doesn't work

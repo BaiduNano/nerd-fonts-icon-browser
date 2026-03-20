@@ -2,6 +2,7 @@
 #include <QAction>
 #include <QStyle>
 #include <QMenu>
+#include <qtmetamacros.h>
 
 IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QString &labelStr, const QString &utfStr):
     QWidget(parent),
@@ -30,7 +31,7 @@ IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QStr
     iconLabel->setWordWrap(true);
     iconLabel->setStyleSheet("QLabel { font-size: 12px; }");
 
-    connect(iconButton, &QPushButton::clicked, this, [&]() { copy(iconStr); });
+    connect(iconButton, &QPushButton::clicked, this, &IconContainer::buttonClicked);
     connect(iconButton, &QPushButton::customContextMenuRequested, this, &IconContainer::contextMenu);
 }
 
@@ -56,4 +57,8 @@ void IconContainer::contextMenu(const QPoint &localPos) {
 
 void IconContainer::copy(const QString &text) {
     emit copied(text);
+}
+
+void IconContainer::buttonClicked() {
+    emit iconClicked(iconStr, labelStr, utfStr);
 }

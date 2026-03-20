@@ -3,6 +3,7 @@
 
 #include <QClipboard>
 #include <QTimer>
+
 #include "../../constants.h"
 
 MainWindow::MainWindow(QWidget *parent):
@@ -14,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent):
 
     ui->setupUi(this);
     ui->notificationLabel->setText("");
+    ui->iconAmmount->setText("");
 
     connect(iconManager, &IconManager::contentUpdated, this, &MainWindow::onContentUpdated);
     connect(notifTimer, &QTimer::timeout, this, &MainWindow::onNotifTimerTimeout);
@@ -26,19 +28,22 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::copyToClipboard(const QString &text) {
-    qDebug().noquote() << "Copied: " << text;
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setText(text);
+
+    qDebug().noquote() << "Copied: " << text;
 }
 
 void MainWindow::spawnNotification(const QString &text) {
     ui->notificationLabel->setText("Copied to clipboard: <b>" + text + "</b>");
 
+    notifTimer->stop();
     notifTimer->start(Constants::notificationDuration);
 }
 
 void MainWindow::onContentUpdated() {
     quint16 index = 0;
+    quint16 ammount = iconManager->getIconContainers()->size();
 
     for (IconContainer *iconContainer : *iconManager->getIconContainers()) {
         quint16 row = index / Constants::maxColumns;
@@ -48,13 +53,30 @@ void MainWindow::onContentUpdated() {
 
         connect(iconContainer, &IconContainer::copied, this, &MainWindow::copyToClipboard);
         connect(iconContainer, &IconContainer::copied, this, &MainWindow::spawnNotification);
+        connect(iconContainer, &IconContainer::iconClicked, this, &MainWindow::onIconClicked);
 
         index++;
     }
+
+    ui->iconAmmount->setText("Showing " + QString::number(ammount) + " icons");
+
     qDebug() << "Content updated";
 }
 
 void MainWindow::onNotifTimerTimeout() {
     ui->notificationLabel->setText("");
     notifTimer->stop();
+}
+
+void MainWindow::onIconClicked(const QString &iconStr, const QString &labelStr, const QString &utfStr) {
+    if (ui->radioCopyIcon->isChecked()) {
+        copyToClipboard(iconStr);
+        spawnNotification(iconStr);
+    } else if (ui->radioCopyName->isChecked()) {
+        copyToClipboard(labelStr);
+        spawnNotification(labelStr);
+    } else if (ui->radioCopyUTF->isChecked()) {
+        copyToClipboard(utfStr);
+        spawnNotification(utfStr);
+    }
 }

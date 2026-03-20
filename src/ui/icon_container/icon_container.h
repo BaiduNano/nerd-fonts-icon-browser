@@ -35,6 +35,7 @@ private:
 
 signals:
     void copied(const QString &text);
+    void iconClicked(const QString &icon, const QString &label, const QString &utf);
 };
 
 #endif // ICON_CONTAINER_H
