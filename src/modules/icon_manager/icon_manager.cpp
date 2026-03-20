@@ -4,7 +4,6 @@
 
 #include <QFile>
 #include <QMessageBox>
-#include <qlogging.h>
 
 const quint8 visibleIconLimit = 100;
 const QString keyChar = "char";

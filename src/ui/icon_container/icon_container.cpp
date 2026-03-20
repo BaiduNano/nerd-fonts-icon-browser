@@ -1,9 +1,6 @@
 #include "icon_container.h"
 #include <QAction>
 #include <QMenu>
-#include <qlogging.h>
-#include <qpoint.h>
-#include <qtmetamacros.h>
 
 IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QString &labelStr, const QString &utfStr):
     QWidget(parent),
