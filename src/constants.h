@@ -5,6 +5,9 @@
 #include <QStandardPaths>
 
 namespace Constants {
+    const quint8 iconFontSize = 38;
+    const quint8 labelFontSize = 12;
+
     const quint8 maxColumns = 5;
     const quint8 maxItems = 200;
     const quint16 notificationDuration = 2000;

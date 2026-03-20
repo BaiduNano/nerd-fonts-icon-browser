@@ -1,8 +1,9 @@
 #include "icon_container.h"
+#include "../../constants.h"
+
 #include <QAction>
 #include <QStyle>
 #include <QMenu>
-#include <qtmetamacros.h>
 
 IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QString &labelStr, const QString &utfStr):
     QWidget(parent),
@@ -18,19 +19,25 @@ IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QStr
     setMinimumWidth(64);
     setMaximumHeight(92);
 
-    mainLayout->setContentsMargins(1, 1, 1, 1);
-    mainLayout->setSpacing(1);
+    mainLayout->setContentsMargins(2, 2, 2, 2);
+    mainLayout->setSpacing(2);
     mainLayout->addWidget(iconButton);
     mainLayout->addWidget(iconLabel);
 
     iconButton->setText(iconStr + "");
     iconButton->setContextMenuPolicy(Qt::CustomContextMenu);
-    iconButton->setStyleSheet("QPushButton { font-size: 32px; }");
+    iconButton->setStyleSheet(
+    "QPushButton { "
+        "font-size: " + QString::number(Constants::iconFontSize) + "px;"
+
+    "}"
+
+    );
 
     iconLabel->setText(labelStr);
     iconLabel->setAlignment(Qt::AlignCenter);
     iconLabel->setWordWrap(true);
-    iconLabel->setStyleSheet("QLabel { font-size: 12px; }");
+    iconLabel->setStyleSheet("QLabel { font-size: " + QString::number(Constants::labelFontSize) + "px; }");
 
     connect(iconButton, &QPushButton::clicked, this, &IconContainer::buttonClicked);
     connect(iconButton, &QPushButton::customContextMenuRequested, this, &IconContainer::contextMenu);
