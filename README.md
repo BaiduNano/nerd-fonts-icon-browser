@@ -4,7 +4,7 @@
 </div>
 
 # Nerd Fonts Icon Browser
-
+<img src="res/icon/icon.png" width="64">
 A Qt based desktop app for browsing and searching Nerd Fonts icons with copy paste support, so you don't have to open a web browser everytime you want to search for nerd font icons. 
 
 ## Download
