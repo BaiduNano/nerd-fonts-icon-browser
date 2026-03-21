@@ -20,13 +20,20 @@ Binary realeases are available [here](https://github.com/BaiduNano/nerd-fonts-ic
 Requirements:
 - Qt6
 - CMake
-- Ninja
-- C++20 compatible compiler, <b>clang</b> is recommended. 
+- C++20 compiler
 
 ## Building
-1.
+
+Linux
 ```bash
 cmake -B build
 cmake --build build
 ```
-2. Run `./build/NerdFontsIconBrowser`
+
+Windows
+```
+cmake --preset windows-mingw
+cmake --build build-windows
+```
+
+Run `./build/NerdFontsIconBrowser`

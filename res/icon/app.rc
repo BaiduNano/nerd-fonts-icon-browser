@@ -1,0 +1,17 @@
+id ICON "C:/Users/Baidu/Documents/GitHub/nerd-fonts-icon-browser/res/icon/icon.ico"
+
+1 VERSIONINFO
+FILEVERSION 0,0,4,0
+PRODUCTVERSION 0,0,4,0
+{
+  BLOCK "StringFileInfo"
+  {
+    BLOCK "040904B0"
+    {
+      VALUE "FileDescription", "Nerd Fonts Icon Browser"
+      VALUE "ProductName", "NerdFontsIconBrowser"
+      VALUE "FileVersion", "0.0.4"
+      VALUE "ProductVersion", "0.0.4"
+    }
+  }
+}

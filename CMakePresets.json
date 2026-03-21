@@ -6,13 +6,22 @@
       "displayName": "windos",
       "generator": "MinGW Makefiles",
       "toolchainFile": "${sourceDir}/windows-mingw.cmake",
-      "binaryDir": "${sourceDir}/build-windows"
+      "binaryDir": "${sourceDir}/build-windows",
+      "cacheVariables": {
+        "CMAKE_MAKE_PROGRAM": "C:/Qt/Tools/mingw1310_64/bin/mingw32-make.exe"
+      }
     },
     {
       "name": "linux",
       "displayName": "linuj",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-mingw",
+      "configurePreset": "windows-mingw"
     }
   ]
 }

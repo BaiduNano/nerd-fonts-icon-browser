@@ -1,14 +1,16 @@
 set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_SYSTEM_PROCESSOR x86_64)
 
-set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
-set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
-set(CMAKE_RC_COMPILER x86_64-w64-mingw32-windres)
+set(CMAKE_C_COMPILER C:/Qt/Tools/mingw1310_64/bin/gcc.exe)
+set(CMAKE_CXX_COMPILER C:/Qt/Tools/mingw1310_64/bin/g++.exe)
+set(CMAKE_RC_COMPILER C:/Qt/Tools/mingw1310_64/bin/windres.exe)
+set(CMAKE_MAKE_PROGRAM C:/Qt/Tools/mingw1310_64/bin/mingw32-make.exe)
 
-set(CMAKE_FIND_ROOT_PATH /usr/x86_64-w64-mingw32)
+set(CMAKE_FIND_ROOT_PATH C:/Qt/6.10.2/mingw_64)
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-set(Qt6_DIR /usr/lib/x86_64-w64-mingw32/cmake/Qt6)
+set(CMAKE_PREFIX_PATH C:/Qt/6.10.2/mingw_64/lib/cmake)
+set(Qt6_DIR C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6)
