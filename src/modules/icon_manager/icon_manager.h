@@ -14,6 +14,7 @@ class IconManager : public QObject {
 private:
     IconContainers iconContainers;
     IconMap iconMap;
+
     quint8 increment;
 
     static QString checkPathsAndGetPath(const QStringList &paths);

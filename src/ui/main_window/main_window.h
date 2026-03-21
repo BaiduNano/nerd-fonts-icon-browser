@@ -25,13 +25,18 @@ private:
     SearchEngine *searchEngine;
 
     QTimer *notifTimer;
+    QTimer *resizeTimer;
     QLabel *landingLabel;
+    QLabel *notFoundLabel;
 
-    void setupLandingLabel();
+    quint8 calcColAmmount();
+
+    void setupLabel();
 
     static void copyToClipboard(const QString &text);
     void spawnNotification(const QString &text);
 
+    void onWindowResized();
     void onContentUpdated();
     void onNotifTimerTimeout();
     void onIconClicked(const QString &iconStr, const QString &labelStr, const QString &utfStr);
@@ -39,6 +44,9 @@ private:
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
+
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

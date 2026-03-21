@@ -19,7 +19,15 @@ private:
     IconManager *iconManager;
 
     IconMap allIconMap;
+    IconMap displayedIconMap;
+
     IconMap search(const QString &querry);
+
+    static QString processQueryString(const QString &querry);
+
+    void dispatchSearchJob(const QString &querry);
+    void textChanged();
+    void searchThreadFinished();
 
 public:
     explicit SearchEngine(QWidget *parent = nullptr);
@@ -27,9 +35,8 @@ public:
 
     void setSearchBar(QPlainTextEdit *searchBar);
     void setIconManager(IconManager *iconManager);
-    void textChanged();
 
-    void searchThreadFinished();
+    IconMap *getDisplayedIconMap();
 };
 
 #endif // SEARCH_ENGINE_H

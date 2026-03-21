@@ -24,8 +24,15 @@ void SearchEngine::setIconManager(IconManager *iconManager) {
 
 void SearchEngine::textChanged() {
     QString text = searchBar->toPlainText();
-    QFuture<IconMap> future = QtConcurrent::run([this, text]() {
-        return this->search(text);
+    QString processedQuery = processQueryString(text);
+
+    dispatchSearchJob(processedQuery);
+}
+
+void SearchEngine::dispatchSearchJob(const QString &querry) {
+    // querry is pass by value, pass by reference doesn't work
+    QFuture<IconMap> future = QtConcurrent::run([this, querry]() {
+        return this->search(querry);
     });
     watcher->setFuture(future);
 }
@@ -36,20 +43,28 @@ IconMap SearchEngine::search(const QString &querry) {
     if (querry.isEmpty()) {
         return result; }
 
-    QString lowerQuerry = querry.toLower();
-
-    for (auto it = allIconMap.constBegin(); it != allIconMap.constEnd(); ++it) {
-        if (it.key().toLower().contains(lowerQuerry)) {
-            result.insert(it.key(), it.value());
+    for (auto el = allIconMap.constBegin(); el != allIconMap.constEnd(); el++) {
+        if (el.key().toLower().contains(querry)) {
+            result.insert(el.key(), el.value());
         }
     }
     return result;
 }
 
 void SearchEngine::searchThreadFinished() {
-    IconMap result = watcher->result();
+    displayedIconMap = watcher->result();
 
-    // TODO: This shi is so not optimized
+    // TODO: This shi is SO not optimized
     iconManager->clearIconContainers();
-    iconManager->generateIconContainers(parent, result);
+    iconManager->generateIconContainers(parent, displayedIconMap);
+}
+
+QString SearchEngine::processQueryString(const QString &querry){
+    QString result = querry.toLower();
+    result.replace(' ', '_');
+    return result;
+}
+
+IconMap *SearchEngine::getDisplayedIconMap() {
+    return &displayedIconMap;
 }

@@ -12,8 +12,8 @@ IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QStr
     utfStr(utfStr),
 
     mainLayout(new QVBoxLayout()),
-    iconLabel(new QLabel(this)),
-    iconButton(new QPushButton(this))
+    iconLabel(new QLabel(parent)),
+    iconButton(new QPushButton(parent))
 {
     setLayout(mainLayout);
     setMinimumWidth(64);
