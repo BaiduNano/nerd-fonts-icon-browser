@@ -4,7 +4,7 @@
 
 #include <QFile>
 #include <QMessageBox>
-#include <qlogging.h>
+#include <QFontDatabase>
 
 const QString keyChar = "char";
 const QString keyCode = "code";
@@ -12,12 +12,17 @@ const QString keyCode = "code";
 IconManager::IconManager(QWidget *parent)
     : QObject(parent)
 {
-    auto filePath = checkPathsAndGetPath(Constants::getSearchPaths());
-    if (filePath.isEmpty()) {
+    auto glyphPath = checkPathsAndGetPath(Constants::getSearchPaths());
+    auto fontPath = checkPathsAndGetPath(Constants::getFallbackFontPaths());
+
+    if (glyphPath.isEmpty()) {
         spawnCriticalError(parent);
         return;
     }
-    loadIcons(filePath);
+    if (!fontPath.isEmpty()) {
+        loadFont(fontPath);
+    }
+    loadIcons(glyphPath);
 }
 
 IconManager::~IconManager(){
@@ -36,11 +41,9 @@ IconMap IconManager::getIconMap() {
 
 QString IconManager::checkPathsAndGetPath(const QStringList &paths) {
     for (const QString &p : paths) {
-        qDebug() << p;
         if (QFile::exists(p))
             return p;
     }
-    qDebug() << "glyphnames.json not found";
     return QString();
 }
 
@@ -57,20 +60,22 @@ void IconManager::loadIcons(const QString &filePath) {
         if (valChar.isEmpty() || valCode.isEmpty()) {
             continue;
         }
-        /*
-        qDebug() << "Loaded Icon";
-        qDebug().noquote() << "Name: " << key;
-        qDebug().noquote() << "Icon: " << valChar;
-        qDebug().noquote() << "UTF-8: " << valCode;
-        qDebug() << "------";
-        */
+
         iconMap[key] = {
             {keyChar, valChar},
             {keyCode, valCode}
         };
         iconCount++;
     }
+
     qDebug() << "Loaded Icons: " << iconCount;
+}
+
+void IconManager::loadFont(const QString &filePath) {
+    quint16 fontId = QFontDatabase::addApplicationFont(filePath);
+    QString family = QFontDatabase::applicationFontFamilies(fontId).at(0);
+
+    IconContainer::fallbackFont = new QFont(family);
 }
 
 void IconManager::generateIconContainers(QWidget *parent, IconMap &map) {

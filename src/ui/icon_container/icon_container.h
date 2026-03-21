@@ -5,12 +5,15 @@
 #include <QMap>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QFont>
 #include <QPushButton>
 
 class IconContainer : public QWidget {
     Q_OBJECT
 
 public:
+    inline static QFont *fallbackFont = nullptr;
+
     explicit IconContainer(
         QWidget *parent = nullptr,
         const QString &iconStr = QString(),

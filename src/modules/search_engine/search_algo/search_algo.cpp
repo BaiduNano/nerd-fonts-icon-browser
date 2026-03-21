@@ -2,6 +2,6 @@
 
 namespace MiniSearch {
     QVector<QString> search(const QString &query, const QVector<QString> &documents) {
-
+        return QVector<QString>();
     }
 }

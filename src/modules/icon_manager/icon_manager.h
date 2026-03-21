@@ -1,9 +1,11 @@
 #ifndef ICON_MANAGER_H
 #define ICON_MANAGER_H
 
+#include "../../ui/icon_container/icon_container.h"
+
 #include <QObject>
 #include <QWidget>
-#include "../../ui/icon_container/icon_container.h"
+#include <QFont>
 
 using IconContainers = std::vector<IconContainer*>;
 using IconMap = QMap<QString, QMap<QString, QString>>;
@@ -18,8 +20,10 @@ private:
     quint8 increment;
 
     static QString checkPathsAndGetPath(const QStringList &paths);
+    static void spawnCriticalError(QWidget *parent);
+    static void loadFont(const QString &filePath);
+
     void loadIcons(const QString &filePath);
-    void spawnCriticalError(QWidget *parent);
 
 public:
     explicit IconManager(QWidget *parent = nullptr);

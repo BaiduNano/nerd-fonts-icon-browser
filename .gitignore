@@ -1,4 +1,6 @@
 build/
+appimage/
+tools/
 .cache/
 *.o
 *.a

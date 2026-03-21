@@ -3,7 +3,6 @@
 
 #include <QClipboard>
 #include <QTimer>
-#include <qtypes.h>
 
 #include "../../constants.h"
 
@@ -23,6 +22,9 @@ MainWindow::MainWindow(QWidget *parent):
     ui->iconAmmount->setText("");
     ui->gridLayout->addWidget(landingLabel);
     ui->gridLayout->addWidget(notFoundLabel);
+    if (IconContainer::fallbackFont != nullptr){
+        ui->notificationLabel->setFont(*IconContainer::fallbackFont);
+    }
 
     resizeTimer->setSingleShot(true);
 
@@ -136,11 +138,11 @@ void MainWindow::onIconClicked(const QString &iconStr, const QString &labelStr, 
 
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QWidget::resizeEvent(event);
+    resizeTimer->stop();
     resizeTimer->start(Constants::resizeRefreshDuration);
 }
 
 void MainWindow::onWindowResized() {
-    qDebug() << "Window Resized";
     // TODO: heavy af, better way to do this
     IconMap temp(*searchEngine->getDisplayedIconMap());
     iconManager->clearIconContainers();

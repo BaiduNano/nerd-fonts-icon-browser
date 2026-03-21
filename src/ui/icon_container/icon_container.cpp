@@ -24,15 +24,17 @@ IconContainer::IconContainer(QWidget *parent, const QString &iconStr, const QStr
     mainLayout->addWidget(iconButton);
     mainLayout->addWidget(iconLabel);
 
-    iconButton->setText(iconStr + "");
+    iconButton->setText(iconStr);
     iconButton->setContextMenuPolicy(Qt::CustomContextMenu);
     iconButton->setStyleSheet(
-    "QPushButton { "
-        "font-size: " + QString::number(Constants::iconFontSize) + "px;"
-
-    "}"
-
+        "QPushButton { "
+            "font-size: " + QString::number(Constants::iconFontSize) + "px;"
+        "}"
     );
+
+    if (fallbackFont != nullptr){
+        iconButton->setFont(*fallbackFont);
+    }
 
     iconLabel->setText(labelStr);
     iconLabel->setAlignment(Qt::AlignCenter);
