@@ -4,6 +4,7 @@
 
 #include <QFile>
 #include <QMessageBox>
+#include <qlogging.h>
 
 const QString keyChar = "char";
 const QString keyCode = "code";
@@ -35,6 +36,7 @@ IconMap IconManager::getIconMap() {
 
 QString IconManager::checkPathsAndGetPath(const QStringList &paths) {
     for (const QString &p : paths) {
+        qDebug() << p;
         if (QFile::exists(p))
             return p;
     }

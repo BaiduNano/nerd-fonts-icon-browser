@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
-project(NerdFontsIconBrowser VERSION 1.0.0 LANGUAGES CXX)
+project(NerdFontsIconBrowser VERSION 0.0.3 LANGUAGES CXX)
 
-set(EXECUTABLE_NAME "NerdFontsIconBrowser")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -16,5 +15,5 @@ file(GLOB_RECURSE SOURCES
 )
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_link_libraries(${EXECUTABLE_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)

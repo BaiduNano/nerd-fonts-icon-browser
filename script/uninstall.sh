@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CONFIG_NAME="nf-icon-browser"
+APP_NAME="NerdFontsIconBrowser"
 EXEC_NAME="nf-icon-browser"
 
-rm -rf $HOME/.local/share/$CONFIG_NAME
+rm -rf $HOME/.local/share/$APP_NAME
 
 sudo rm /usr/bin/$EXEC_NAME

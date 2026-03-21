@@ -29,5 +29,5 @@ Requirements:
 cmake -B build
 cmake --build build
 ```
-2. Place `glyphnames.json` from the [Nerd Fonts repository](https://github.com/ryanoasis/nerd-fonts/blob/master/glyphnames.json) in the application directory, or `.local/share/nf-icon-browser`
+2. Place `glyphnames.json` from the [Nerd Fonts repository](https://github.com/ryanoasis/nerd-fonts/blob/master/glyphnames.json) in the application directory, or `.local/share/NerdFontsIconBrowser` on unix, or `$APPDATA/NerdFontsIconBrowser` on windows.
 3. Run `./build/NerdFontsIconBrowser`

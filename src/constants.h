@@ -20,9 +20,13 @@ namespace Constants {
 
     inline QStringList getSearchPaths() {
         return {
-            QCoreApplication::applicationDirPath() + "/glyphnames.json",
-            QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/glyphnames.json",
-            QApplication::applicationDirPath() + "/glyphnames.json"
+            QApplication::applicationDirPath() + "/glyphnames.json",
+            QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/glyphnames.json"
+        };
+    }
+    inline QStringList getFallbackFontPaths() {
+        return {
+            QApplication::applicationDirPath() + "/fonts/"
         };
     }
 }
