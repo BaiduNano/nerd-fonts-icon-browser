@@ -3,8 +3,6 @@
 
 #include <QApplication>
 #include <QStandardPaths>
-#include <qcontainerfwd.h>
-#include <qobject.h>
 
 namespace Constants {
     const quint8 iconFontSize = 38;

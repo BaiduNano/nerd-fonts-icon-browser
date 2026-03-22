@@ -5,8 +5,8 @@
 #include <QGridLayout>
 #include <QTimer>
 
-#include "../../modules/icon_manager/icon_manager.h"
-#include "../../modules/search_engine/search_engine.h"
+#include "modules/icon_manager/icon_manager.h"
+#include "modules/search_engine/search_engine.h"
 
 QT_BEGIN_NAMESPACE
 

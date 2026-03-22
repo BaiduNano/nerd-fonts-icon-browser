@@ -1,7 +1,7 @@
 #ifndef SEARCH_ENGINE_H
 #define SEARCH_ENGINE_H
 
-#include "../icon_manager/icon_manager.h"
+#include "modules/icon_manager/icon_manager.h"
 
 #include <QObject>
 #include <QWidget>

@@ -1,5 +1,5 @@
 #include "icon_container.h"
-#include "../../constants.h"
+#include "constants.h"
 
 #include <QAction>
 #include <QStyle>

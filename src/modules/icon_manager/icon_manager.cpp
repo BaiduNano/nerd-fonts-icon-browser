@@ -1,6 +1,6 @@
 #include "icon_manager.h"
-#include "../../constants.h"
-#include "../json_parser/json_parser.h"
+#include "constants.h"
+#include "modules/json_parser/json_parser.h"
 
 #include <QFile>
 #include <QMessageBox>

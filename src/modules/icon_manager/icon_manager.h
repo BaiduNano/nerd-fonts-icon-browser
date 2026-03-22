@@ -1,7 +1,7 @@
 #ifndef ICON_MANAGER_H
 #define ICON_MANAGER_H
 
-#include "../../ui/icon_container/icon_container.h"
+#include "ui/icon_container/icon_container.h"
 
 #include <QObject>
 #include <QWidget>

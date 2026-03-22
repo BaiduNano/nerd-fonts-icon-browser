@@ -4,7 +4,7 @@
 #include <QClipboard>
 #include <QTimer>
 
-#include "../../constants.h"
+#include "constants.h"
 
 MainWindow::MainWindow(QWidget *parent):
     QWidget(parent),

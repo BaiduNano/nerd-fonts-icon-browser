@@ -1,6 +1,13 @@
 CompileFlags:
   Add: ["-std=c++20", "-I.", "-I./src", "-isystem", "/usr/include/qt6"]
-  Remove: ["-W*", "-fdeps-format=*", "-fmodule-mapper=*", "-fmodules-ts", "-mno-direct-extern-access"]
+  Remove:
+    [
+      "-W*",
+      "-fdeps-format=*",
+      "-fmodule-mapper=*",
+      "-fmodules-ts",
+      "-mno-direct-extern-access",
+    ]
 
 Diagnostics:
   ClangTidy:
